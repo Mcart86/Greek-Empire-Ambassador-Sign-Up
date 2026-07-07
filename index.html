@@ -247,11 +247,15 @@ footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1
   /* BENEFITS */
   .benefits-grid { grid-template-columns: 1fr; }
   .benefit-card { padding: 1.5rem 1.25rem; }
+  .benefit-num, .earn-card-num { font-size: 4.5rem; }
 
   /* EARN */
   .earn-cards { grid-template-columns: 1fr; }
   .example-earnings { flex-direction: column; gap: 0.5rem; padding: 1rem; }
   .example-earnings .eg-items { flex-direction: column; gap: 0.4rem; align-items: center; }
+
+  /* AMBASSADORS */
+  .amb-card { width: calc(50% - 1rem) !important; }
 
   /* EXPECT */
   .expect-list { grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -706,6 +710,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1
 <!-- AMBASSADOR PROFILES -->
 <style>
 .amb-circle { width:210px; height:210px; border-radius:50%; overflow:hidden; margin:0 auto 1.25rem; cursor:pointer; transition: box-shadow 0.3s ease; position:relative; background:transparent; }
+.amb-card { width: clamp(140px, 22vw, 210px); }
 .amb-circle:hover { box-shadow: 0 0 24px rgba(201,168,76,0.4); }
 .amb-img { width:130%; height:130%; object-fit:cover; display:block; transition: transform 0.4s ease; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
 .amb-circle:hover .amb-img { transform:translate(-50%,-50%) scale(1.1); }
@@ -717,28 +722,28 @@ footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1
     </div>
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; width:100%;" class="reveal">
 
-      <div style="text-align:center; width:clamp(140px,40vw,280px); flex-shrink:0;">
+      <div class="amb-card" style="text-align:center; flex-shrink:0;">
         <div class="amb-circle">
           <img src="https://greek-empire.vercel.app/ambassador-1.png" class="amb-img" style="object-position:center center;" />
         </div>
         <p style="font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.3rem; background:linear-gradient(90deg,#C9A84C 0%,#E8C95A 25%,#FFE078 50%,#E8C95A 75%,#C9A84C 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Elijah</p>
       </div>
 
-      <div style="text-align:center; width:clamp(140px,40vw,280px); flex-shrink:0;">
+      <div class="amb-card" style="text-align:center; flex-shrink:0;">
         <div class="amb-circle">
           <img src="https://greek-empire.vercel.app/ambassador-2.png" class="amb-img" style="object-position:center center;" />
         </div>
         <p style="font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.3rem; background:linear-gradient(90deg,#C9A84C 0%,#E8C95A 25%,#FFE078 50%,#E8C95A 75%,#C9A84C 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Jackson</p>
       </div>
 
-      <div style="text-align:center; width:clamp(140px,40vw,280px); flex-shrink:0;">
+      <div class="amb-card" style="text-align:center; flex-shrink:0;">
         <div class="amb-circle">
           <img src="https://greek-empire.vercel.app/ambassador-3.png" class="amb-img" style="object-position:center center;" />
         </div>
         <p style="font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.3rem; background:linear-gradient(90deg,#C9A84C 0%,#E8C95A 25%,#FFE078 50%,#E8C95A 75%,#C9A84C 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Avry</p>
       </div>
 
-      <div style="text-align:center; width:clamp(140px,40vw,280px); flex-shrink:0;">
+      <div class="amb-card" style="text-align:center; flex-shrink:0;">
         <div class="amb-circle">
           <img src="https://greek-empire.vercel.app/ambassador-4.png" class="amb-img" style="object-position:center center;" />
         </div>
