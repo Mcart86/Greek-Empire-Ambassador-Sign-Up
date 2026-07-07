@@ -702,6 +702,83 @@ footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1
   </div>
 </section>
 
+<!-- PHOTO TICKER -->
+<style>
+.photo-ticker { width: 100%; overflow: hidden; background: #000; line-height: 0; position: relative; z-index: 2; }
+.photo-ticker::before,
+.photo-ticker::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 3; pointer-events: none; }
+.photo-ticker::before { left: 0; background: linear-gradient(to right, #B8963E 0%, transparent 100%); }
+.photo-ticker::after  { right: 0; background: linear-gradient(to left, #B8963E 0%, transparent 100%); }
+.photo-ticker-track { display: flex; width: max-content; animation: photoScroll 28s linear infinite; align-items: flex-end; }
+.photo-ticker-track:hover { animation-play-state: paused; }
+.photo-ticker-item { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.photo-ticker-item img { height: 260px; width: auto; object-fit: cover; display: block; opacity: 0.88; transition: opacity 0.3s; }
+.photo-ticker-item:hover img { opacity: 1; }
+.photo-ticker-item span { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.3em; text-transform: uppercase; color: #FFD700; padding: 0.6rem 1rem 0.5rem; display: block; line-height: 1; }
+@keyframes photoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@media (max-width: 768px) { .photo-ticker-item img { height: 160px; } .photo-ticker-item span { font-size: 0.55rem; letter-spacing: 0.2em; } }
+</style>
+<div class="photo-ticker">
+  <div class="photo-ticker-track">
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-hats.png" alt="Hats" /><span>Hats</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-shirts.png" alt="Shirts" /><span>Shirts</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-sweatshirt.png" alt="Sweatshirts" /><span>Sweatshirts</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-tanktops.png" alt="Tank Tops" /><span>Tank Tops</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-bags.png" alt="Bags" /><span>Bags</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-hats.png" alt="Hats" /><span>Hats</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-shirts.png" alt="Shirts" /><span>Shirts</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-sweatshirt.png" alt="Sweatshirts" /><span>Sweatshirts</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-tanktops.png" alt="Tank Tops" /><span>Tank Tops</span></div>
+    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-bags.png" alt="Bags" /><span>Bags</span></div>
+  </div>
+</div>
+
+<!-- AMBASSADOR PROFILES -->
+<style>
+.amb-circle { width:280px; height:280px; border-radius:50%; overflow:hidden; margin:0 auto 1.25rem; cursor:pointer; transition: box-shadow 0.3s ease; position:relative; background:transparent; }
+.amb-circle:hover { box-shadow: 0 0 24px rgba(201,168,76,0.4); }
+.amb-img { width:130%; height:130%; object-fit:cover; display:block; transition: transform 0.4s ease; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+.amb-circle:hover .amb-img { transform:translate(-50%,-50%) scale(1.1); }
+</style>
+<section style="background:#050505; padding:4rem 2rem 5rem; border-top:1px solid rgba(201,168,76,0.1);">
+  <div style="max-width:100%; margin:0 auto; text-align:center;">
+    <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+      <h2 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(2.4rem,5vw,4.2rem);line-height:0.95;letter-spacing:0.02em;text-transform:uppercase;color:#fff;">Meet Some of the <em style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1em;letter-spacing:0.04em;text-transform:none;background:linear-gradient(90deg,#C9A84C 0%,#E8C95A 25%,#FFE078 50%,#E8C95A 75%,#C9A84C 100%);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 9s linear infinite;">Campus Ambassadors</em></h2>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; width:100%;" class="reveal">
+
+      <div style="text-align:center; width:clamp(140px,40vw,280px); flex-shrink:0;">
+        <div class="amb-circle">
+          <img src="https://greek-empire.vercel.app/ambassador-1.png" class="amb-img" style="object-position:center center;" />
+        </div>
+        <p style="font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.3rem; background:linear-gradient(90deg,#C9A84C 0%,#E8C95A 25%,#FFE078 50%,#E8C95A 75%,#C9A84C 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Elijah</p>
+      </div>
+
+      <div style="text-align:center; width:clamp(140px,40vw,280px); flex-shrink:0;">
+        <div class="amb-circle">
+          <img src="https://greek-empire.vercel.app/ambassador-2.png" class="amb-img" style="object-position:center center;" />
+        </div>
+        <p style="font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.3rem; background:linear-gradient(90deg,#C9A84C 0%,#E8C95A 25%,#FFE078 50%,#E8C95A 75%,#C9A84C 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Jackson</p>
+      </div>
+
+      <div style="text-align:center; width:clamp(140px,40vw,280px); flex-shrink:0;">
+        <div class="amb-circle">
+          <img src="https://greek-empire.vercel.app/ambassador-3.png" class="amb-img" style="object-position:center center;" />
+        </div>
+        <p style="font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.3rem; background:linear-gradient(90deg,#C9A84C 0%,#E8C95A 25%,#FFE078 50%,#E8C95A 75%,#C9A84C 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Avry</p>
+      </div>
+
+      <div style="text-align:center; width:clamp(140px,40vw,280px); flex-shrink:0;">
+        <div class="amb-circle">
+          <img src="https://greek-empire.vercel.app/ambassador-4.png" class="amb-img" style="object-position:center center;" />
+        </div>
+        <p style="font-family:var(--font-display); font-size:1.5rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.3rem; background:linear-gradient(90deg,#C9A84C 0%,#E8C95A 25%,#FFE078 50%,#E8C95A 75%,#C9A84C 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Alexa</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
