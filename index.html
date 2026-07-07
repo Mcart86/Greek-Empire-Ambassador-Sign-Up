@@ -308,9 +308,35 @@ footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1
 
 </section>
 
-
-
-<!-- DIVIDER -->
+<!-- PHOTO TICKER -->
+<style>
+.photo-ticker { width: 100%; overflow: hidden; background: #000; line-height: 0; position: relative; z-index: 2; }
+.photo-ticker::before, .photo-ticker::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 3; pointer-events: none; }
+.photo-ticker::before { left: 0; background: linear-gradient(to right, #B8963E 0%, transparent 100%); }
+.photo-ticker::after  { right: 0; background: linear-gradient(to left, #B8963E 0%, transparent 100%); }
+.photo-ticker-track { display: flex; width: max-content; animation: photoScroll 28s linear infinite; align-items: flex-end; }
+.photo-ticker-track:hover { animation-play-state: paused; }
+.photo-ticker-item { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.photo-ticker-item img { height: 260px; width: auto; object-fit: cover; display: block; opacity: 0.88; transition: opacity 0.3s; }
+.photo-ticker-item:hover img { opacity: 1; }
+.photo-ticker-item span { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.3em; text-transform: uppercase; color: #FFD700; padding: 0.6rem 1rem 0.5rem; display: block; line-height: 1; }
+@keyframes photoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@media (max-width: 768px) { .photo-ticker-item img { height: 160px; } .photo-ticker-item span { font-size: 0.55rem; letter-spacing: 0.2em; } }
+</style>
+<div class="photo-ticker">
+  <div class="photo-ticker-track">
+    <div class="photo-ticker-item"><img src="product-hats.png" alt="Hats" /><span>Hats</span></div>
+    <div class="photo-ticker-item"><img src="product-shirts.png" alt="Shirts" /><span>Shirts</span></div>
+    <div class="photo-ticker-item"><img src="product-sweatshirt.png" alt="Sweatshirts" /><span>Sweatshirts</span></div>
+    <div class="photo-ticker-item"><img src="product-tanktops.png" alt="Tank Tops" /><span>Tank Tops</span></div>
+    <div class="photo-ticker-item"><img src="product-bags.png" alt="Bags" /><span>Bags</span></div>
+    <div class="photo-ticker-item"><img src="product-hats.png" alt="Hats" /><span>Hats</span></div>
+    <div class="photo-ticker-item"><img src="product-shirts.png" alt="Shirts" /><span>Shirts</span></div>
+    <div class="photo-ticker-item"><img src="product-sweatshirt.png" alt="Sweatshirts" /><span>Sweatshirts</span></div>
+    <div class="photo-ticker-item"><img src="product-tanktops.png" alt="Tank Tops" /><span>Tank Tops</span></div>
+    <div class="photo-ticker-item"><img src="product-bags.png" alt="Bags" /><span>Bags</span></div>
+  </div>
+</div>
 <div class="gold-divider"></div>
 
 <!-- MARQUEE -->
@@ -701,37 +727,6 @@ footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1
     </div>
   </div>
 </section>
-
-<!-- PHOTO TICKER -->
-<style>
-.photo-ticker { width: 100%; overflow: hidden; background: #000; line-height: 0; position: relative; z-index: 2; }
-.photo-ticker::before,
-.photo-ticker::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 3; pointer-events: none; }
-.photo-ticker::before { left: 0; background: linear-gradient(to right, #B8963E 0%, transparent 100%); }
-.photo-ticker::after  { right: 0; background: linear-gradient(to left, #B8963E 0%, transparent 100%); }
-.photo-ticker-track { display: flex; width: max-content; animation: photoScroll 28s linear infinite; align-items: flex-end; }
-.photo-ticker-track:hover { animation-play-state: paused; }
-.photo-ticker-item { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
-.photo-ticker-item img { height: 260px; width: auto; object-fit: cover; display: block; opacity: 0.88; transition: opacity 0.3s; }
-.photo-ticker-item:hover img { opacity: 1; }
-.photo-ticker-item span { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.3em; text-transform: uppercase; color: #FFD700; padding: 0.6rem 1rem 0.5rem; display: block; line-height: 1; }
-@keyframes photoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-@media (max-width: 768px) { .photo-ticker-item img { height: 160px; } .photo-ticker-item span { font-size: 0.55rem; letter-spacing: 0.2em; } }
-</style>
-<div class="photo-ticker">
-  <div class="photo-ticker-track">
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-hats.png" alt="Hats" /><span>Hats</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-shirts.png" alt="Shirts" /><span>Shirts</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-sweatshirt.png" alt="Sweatshirts" /><span>Sweatshirts</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-tanktops.png" alt="Tank Tops" /><span>Tank Tops</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-bags.png" alt="Bags" /><span>Bags</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-hats.png" alt="Hats" /><span>Hats</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-shirts.png" alt="Shirts" /><span>Shirts</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-sweatshirt.png" alt="Sweatshirts" /><span>Sweatshirts</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-tanktops.png" alt="Tank Tops" /><span>Tank Tops</span></div>
-    <div class="photo-ticker-item"><img src="https://greek-empire.vercel.app/product-bags.png" alt="Bags" /><span>Bags</span></div>
-  </div>
-</div>
 
 <!-- AMBASSADOR PROFILES -->
 <style>
