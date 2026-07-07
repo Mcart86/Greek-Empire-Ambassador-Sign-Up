@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greek Empire — Campus Ambassador Sign Up Form</title>
+
+<link rel="preload" href="logo.png" as="image">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Barlow:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #ffffff;
+  --off-black: #f5f4f0;
+  --dark: #ebe9e3;
+  --gold: #c9a84c;
+  --gold-light: #e8c96a;
+  --gold-dim: rgba(201,168,76,0.12);
+  --gold-border: rgba(201,168,76,0.4);
+  --white: #1a1a16;
+  --gray: #5a5856;
+  --font-display: 'Bebas Neue', 'Impact', sans-serif;
+  --font-script: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Barlow', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--white); font-family: var(--font-sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 2.5rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.25); }
+.nav-logo { text-decoration: none; display: flex; align-items: center; }
+.nav-logo img { height: 49px; width: auto; display: block; }
+
+.nav-cta { background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); color: #0e0e0c; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.38rem 1rem; border-radius: var(--radius); text-decoration: none; transition: opacity 0.2s; }
+.nav-cta:hover { opacity: 0.85; }
+
+/* HERO */
+.hero { min-height: 30vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem 2.5rem; position: relative; overflow: hidden; background: #0e0e0c; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%); pointer-events: none; }
+.hero-eyebrow { font-size: 1.24rem; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); opacity: 0.5; }
+.hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(96px, 18vw, 195px); line-height: 0.9; letter-spacing: 0.04em; color: var(--gold); margin-bottom: 0.2em; }
+.hero h1 span { color: var(--gold); }
+.hero-sub { font-family: var(--font-script); font-size: clamp(1.4rem, 3vw, 2.2rem); font-style: italic; font-weight: 400; letter-spacing: 0.06em; margin-top: 0.5rem; margin-bottom: 0.5rem; background: linear-gradient(90deg, #C9921A 0%, #E8B830 20%, #F5D060 35%, #FFF0A0 50%, #F5D060 65%, #E8B830 80%, #C9921A 100%); background-size: 300% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: goldShimmer 9s linear infinite; }
+.hero-desc { max-width: 560px; font-size: 16px; color: #ffffff; line-height: 1.75; margin-bottom: 3rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.btn-primary { background: var(--gold); color: var(--black); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 2.2rem; border-radius: var(--radius); text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-ghost { border: 1px solid var(--gold-border); color: var(--gold); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.9rem 2.2rem; border-radius: var(--radius); text-decoration: none; transition: border-color 0.2s, background 0.2s; display: inline-block; }
+.btn-ghost:hover { background: var(--gold-dim); border-color: var(--gold); }
+
+/* STATS */
+.stats-bar { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); display: flex; justify-content: center; flex-wrap: wrap; }
+.stat-item { flex: 1; min-width: 180px; max-width: 260px; padding: 2rem 1.5rem; text-align: center; border-right: 1px solid rgba(201,168,76,0.1); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Anton', sans-serif; font-size: 48px; letter-spacing: 0.02em; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 0.3rem; }
+.stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); }
+
+/* SECTIONS */
+section { padding: 6rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-eyebrow { font-size: 1.4rem; letter-spacing: 0.35em; text-transform: uppercase; font-weight: 700; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.75rem; display: inline-flex; align-items: center; gap: 0; padding-left: 1rem; border-left: 3px solid #C9A84C; line-height: 1.2; }
+.section-eyebrow::before { display: none; }
+.section-title { font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw, 5rem); line-height: 0.95; letter-spacing: 0.02em; text-transform: uppercase; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem; }
+
+/* ABOUT */
+.about-body { max-width: 100%; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; color: #3a3836; line-height: 1.85; }
+
+/* BENEFITS */
+.benefits-section { background: #0e0e0c; position: relative; }
+.benefits-section::before, .expect-section::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 180px 180px; opacity: 0.025; pointer-events: none; z-index: 0; }
+.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.15); border-radius: 8px; overflow: hidden; margin-top: 3.5rem; }
+.benefit-card { background: #161614; padding: 2rem 1.75rem; transition: background 0.2s; position: relative; overflow: hidden; }
+.benefit-card:hover { background: #1e1e1a; }
+.benefit-card::after { content: ''; position: absolute; inset: 0; border: 1px solid transparent; border-radius: 0; pointer-events: none; background: linear-gradient(#161614,#161614) padding-box, linear-gradient(90deg, #C9A84C, #FFE078, #C9A84C) border-box; opacity: 0; transform: scaleX(0); transform-origin: left; transition: opacity 0.3s, transform 0.4s cubic-bezier(0.22,1,0.36,1); z-index: 0; }
+.benefit-card:hover::after { opacity: 1; transform: scaleX(1); }
+.benefit-card .benefit-num, .benefit-card h3, .benefit-card p { position: relative; z-index: 1; }
+.benefit-num { font-family: var(--font-display); font-size: 7rem; position: absolute; top: -0.5rem; right: 1rem; opacity: 0.20; background: linear-gradient(90deg, #C9A84C 0%, #FFE078 50%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; pointer-events: none; user-select: none; }
+.benefit-card h3 { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 0.12em; text-transform: uppercase; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+.benefit-card p { font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; line-height: 1.7; }
+
+/* EARN */
+.earn-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3.5rem; }
+.earn-card { background: #161614; border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 2rem 1.75rem; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; min-height: 160px; display: flex; flex-direction: column; justify-content: center; }
+.earn-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-3px); }
+.earn-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #C9A84C, #FFE078, #C9A84C); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+.earn-card:hover::before { transform: scaleX(1); opacity: 1; }
+.earn-card-num { font-family: var(--font-display); font-size: 7rem; position: absolute; top: -0.5rem; right: 1rem; opacity: 0.20; background: linear-gradient(90deg, #C9A84C 0%, #FFE078 50%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; pointer-events: none; user-select: none; }
+.earn-card h3 { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: 0.12em; text-transform: uppercase; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
+.earn-card p { font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; line-height: 1.7; }
+.example-earnings { margin-top: 2.5rem; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); border: none; border-radius: 8px; padding: 1.25rem 1.75rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1.5rem; text-align: center; }
+.example-earnings .eg-label { font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #3a2800; }
+.example-earnings .eg-items { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+.example-earnings .eg { font-size: 17px; color: #3a2800; }
+.example-earnings .eg strong { color: #0e0e0c; font-weight: 700; font-size: 20px; }
+
+/* EXPECT */
+.expect-section { background: #0e0e0c; position: relative; }
+.expect-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.expect-list li { display: flex; flex-direction: row; align-items: center; gap: 1rem; padding: 1.1rem 1.5rem; background: #1a1a16; border: 1px solid rgba(201,168,76,0.12); border-radius: 10px; font-family: var(--font-display); font-size: 0.88rem; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; line-height: 1.5; transition: border-color 0.25s, background 0.25s; cursor: default; }
+.expect-item-text { display: flex; flex-direction: column; gap: 0.2rem; }
+.expect-list li::before { content: '✓'; display: flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #C9A84C, #FFE078); color: #0e0e0c; font-size: 0.85rem; font-weight: 900; flex-shrink: 0; }
+.expect-list li:hover { border-color: rgba(201,168,76,0.35); background: #222220; }
+.expect-list li:hover { border-color: rgba(201,168,76,0.6); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(201,168,76,0.1); background: #222218; }
+.expect-title { font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.15em; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; line-height: 1.2; }
+.expect-body { font-family: var(--font-display); font-size: 0.95rem; color: #ffffff; line-height: 1.7; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* FORM */
+.form-section { background: #ffffff; }
+.form-wrapper { max-width: 760px; margin: 3.5rem auto 0; background: #1a1a16; border: 1px solid rgba(201,168,76,0.3); border-radius: 12px; padding: 2.5rem; overflow: hidden; }
+.form-intro { font-size: 19px; color: #ffffff; line-height: 1.7; margin-bottom: 1.75rem; }
+.agree-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.75rem; }
+.agree-row { display: flex; align-items: center; gap: 12px; padding: 0.9rem 1.1rem; background: #ffffff; border: 1px solid rgba(201,168,76,0.3); border-radius: var(--radius); cursor: pointer; font-size: 14px; color: #111111; transition: border-color 0.15s; }
+.agree-row-terms { border-left: 3px solid #C9A84C !important; }
+.read-badge { display: inline-flex; align-items: center; margin-left: 0.6rem; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 0.1rem 0.55rem; font-size: 0.65rem; letter-spacing: 0.1em; color: #C9A84C; font-family: var(--font-display); white-space: nowrap; flex-shrink: 0; }
+.bs-accordion { margin-top: 0.5rem; }
+.bs-toggle { width: 100%; background: linear-gradient(90deg,#C9A84C,#E8C95A,#FFE078,#E8C95A,#C9A84C); border: none; border-radius: var(--radius); padding: 0.75rem 1rem; color: #0e0e0c; font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; text-align: left; font-weight: 700; transition: opacity 0.2s; }
+.bs-toggle:hover { opacity: 0.9; }
+.bs-content { padding: 1.25rem; background: #161614; border: 1px solid rgba(201,168,76,0.15); border-radius: var(--radius); margin-top: 0.4rem; text-align: left; }
+.bs-section { margin-bottom: 1.25rem; }
+.bs-heading { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.18em; margin-bottom: 0.5rem; }
+.bs-heading.do { color: #C9A84C; }
+.bs-heading.dont { color: #ff6b6b; }
+.bs-heading:not(.do):not(.dont) { color: #C9A84C; }
+.bs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.bs-list li { font-size: 0.82rem; color: #ffffff; line-height: 1.6; padding-left: 0; position: relative; }
+.bs-list li::before { display: none; }
+.bs-do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.bs-footer { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.08em; color: #C9A84C; border-top: 1px solid rgba(201,168,76,0.15); padding-top: 1rem; line-height: 1.7; }
+.bs-footer span { font-size: 0.82rem; color: #ffffff; font-family: var(--font-sans); letter-spacing: 0; }
+.agree-row:has(input:checked) { border-color: var(--gold-border); background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.agree-row input[type="checkbox"] { accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+.ack-note { font-size: 18px; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.6; margin-bottom: 2rem; padding: 0.9rem 1.1rem; border-left: 2px solid var(--gold); background-color: rgba(201,168,76,0.08); border-radius: 0 var(--radius) var(--radius) 0; }
+.sig-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; margin-bottom: 8px; display: block; }
+.sig-hint-text { font-weight: 400; text-transform: none; letter-spacing: 0; color: #ffffff; font-size: 11px; }
+.sig-wrap { position: relative; border: 1px solid rgba(201,168,76,0.3); border-radius: var(--radius); background: #ffffff; overflow: hidden; margin-bottom: 6px; }
+#sigCanvas { display: block; width: 100%; height: 120px; cursor: crosshair; touch-action: none; }
+.sig-placeholder { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 13px; color: rgba(138,136,128,0.35); pointer-events: none; user-select: none; transition: opacity 0.2s; }
+.sig-clear { background: none; border: none; font-size: 12px; color: #ffffff; cursor: pointer; padding: 0; text-decoration: underline; font-family: inherit; margin-bottom: 2rem; display: block; }
+.sig-clear:hover { color: var(--gold); }
+.field-group input[type="date"] { width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden; -webkit-appearance: none; appearance: none; }
+.form-divider { height: 1px; background: rgba(201,168,76,0.1); margin: 1.75rem 0; }
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field-grid .full { grid-column: 1 / -1; }
+.field-group { display: flex; flex-direction: column; gap: 6px; }
+.field-group label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; }
+.field-group input { width: 100%; height: 42px; padding: 0 14px; background: #ffffff; border: 1px solid rgba(201,168,76,0.3); border-radius: var(--radius); font-size: 14px; color: #111111; font-family: inherit; outline: none; transition: border-color 0.15s; }
+.field-group input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.07); }
+.field-group input::placeholder { color: rgba(138,136,128,0.45); }
+.field-group input, .field-group select, .field-group textarea { color: #111111 !important; -webkit-text-fill-color: #111111 !important; }
+.field-group input:-webkit-autofill,
+.field-group input:-webkit-autofill:hover,
+.field-group input:-webkit-autofill:focus { -webkit-text-fill-color: #111111 !important; -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important; transition: background-color 5000s ease-in-out 0s; }
+#f-message::placeholder { color: rgba(201,168,76,0.75); }
+#f-message { color: #ffffff !important; }
+.field-group select { width: 100%; height: 42px; padding: 0 14px; background: #ffffff; border: 1px solid rgba(201,168,76,0.3); border-radius: var(--radius); font-size: 14px; color: #ffffff; font-family: inherit; outline: none; transition: border-color 0.15s; appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+.field-group select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.07); }
+.field-group select option { background: #1a1a16; color: #ffffff; }
+.submit-btn { width: 100%; height: 50px; margin-top: 1.75rem; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); color: #0e0e0c; border: none; border-radius: var(--radius); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: opacity 0.2s, transform 0.1s; animation: btnPulse 2.5s ease-in-out infinite; }
+.submit-btn:hover { opacity: 0.85; }
+.submit-btn:active { transform: scale(0.99); }
+.submit-btn:disabled { background: #444; color: #888; cursor: not-allowed; }
+.form-error { font-size: 12px; color: #e07070; margin-top: 0.5rem; display: none; }
+
+/* SUCCESS */
+#successMsg { display: none; max-width: 760px; margin: 3.5rem auto 0; background: var(--off-black); border: 1px solid var(--gold-border); border-radius: 12px; padding: 4rem 2.5rem; text-align: center; }
+#successMsg .check { width: 60px; height: 60px; background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 22px; color: var(--gold); }
+#successMsg h3 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.08em; color: var(--white); margin-bottom: 0.5rem; }
+#successMsg p { font-size: 15px; color: var(--gray); }
+#successMsg .ref { font-size: 11px; color: rgba(138,136,128,0.45); margin-top: 1.25rem; letter-spacing: 0.08em; }
+
+/* FOOTER */
+footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1); padding: 2.5rem 2rem; text-align: center; }
+
+
+/* RESPONSIVE */
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(52px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* GOLD DIVIDER */
+.gold-divider { display: none; }
+
+/* MARQUEE */
+.marquee-strip { background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); padding: 0.75rem 0; overflow: hidden; position: relative; z-index: 10; }
+.marquee-track { display: flex; animation: marqueeScroll 30s linear infinite; width: max-content; }
+.marquee-item { font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 0.35em; text-transform: uppercase; color: #0e0e0c; white-space: nowrap; padding: 0 2rem; display: flex; align-items: center; gap: 2rem; }
+.marquee-item::after { content: '·'; font-size: 1rem; opacity: 0.5; }
+@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes btnPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); } 50% { box-shadow: 0 0 0 8px rgba(201,168,76,0.18); } }
+
+/* FOOTER */
+/* FOOTER */
+.site-footer { background: #0e0e0c; border-top: 1px solid rgba(201,168,76,0.15); padding: 4rem 3.5rem 2.5rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-top { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 3rem; }
+.footer-brand { display: flex; flex-direction: column; align-items: center; }
+.footer-brand-logo { height: 80px; width: auto; margin-bottom: 1rem; display: block; }
+.footer-tagline { font-family: var(--font-script); font-style: italic; font-size: 1rem; color: rgba(201,168,76,0.7); margin-bottom: 1rem; }
+.footer-address { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); line-height: 2; }
+.footer-nav { display: none; }
+.footer-col-title { display: none; }
+.footer-links { display: none; }
+.footer-social-bar { display: flex; align-items: center; justify-content: center; gap: 2rem; padding: 1.75rem 0; border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); margin-bottom: 1.75rem; flex-wrap: wrap; }
+.footer-social-bar a { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-social-bar a:hover { color: var(--gold); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.18); }
+.footer-est { font-family: var(--font-script); font-style: italic; font-size: 0.9rem; background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+@keyframes goldShimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+.gold-gradient { background: linear-gradient(90deg, #C9A84C 0%, #E8C95A 25%, #FFE078 50%, #E8C95A 75%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+@media (max-width: 768px) {
+  /* NAV */
+  nav { padding: 0.6rem 1.25rem; }
+
+  /* HERO */
+  .hero { min-height: auto; padding: 5rem 1.25rem 2.5rem; }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; }
+  .hero img[src="logo.png"] { width: min(78vw, 300px) !important; margin-bottom: 0.4rem !important; }
+  .hero-sub { font-size: 1.1rem; margin-top: 0.4rem; margin-bottom: 0.4rem; white-space: normal; }
+  .hero-desc { font-size: 14px; margin-bottom: 2rem; }
+
+  /* SECTIONS */
+  section { padding: 3.5rem 1.25rem; }
+  .section-eyebrow { font-size: 1rem; }
+
+  /* ABOUT */
+  .about-body { font-size: 0.9rem; letter-spacing: 0.06em; }
+
+  /* BENEFITS */
+  .benefits-grid { grid-template-columns: 1fr; }
+  .benefit-card { padding: 1.5rem 1.25rem; }
+
+  /* EARN */
+  .earn-cards { grid-template-columns: 1fr; }
+  .example-earnings { flex-direction: column; gap: 0.5rem; padding: 1rem; }
+  .example-earnings .eg-items { flex-direction: column; gap: 0.4rem; align-items: center; }
+
+  /* EXPECT */
+  .expect-list { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .expect-list li { padding: 1.1rem; }
+  .expect-title { font-size: 0.75rem; }
+  .expect-body { font-size: 0.82rem; }
+
+  /* FORM */
+  .form-wrapper { padding: 1.25rem; margin: 1.5rem auto 0; }
+  .field-grid { grid-template-columns: 1fr; }
+  .field-grid .full { grid-column: 1; }
+  .agree-row { font-size: 13px; padding: 0.75rem 0.9rem; }
+  #sigCanvas { height: 100px; }
+  .submit-btn { font-size: 12px; height: 46px; }
+
+  /* MARQUEE */
+  .marquee-item { font-size: 0.8rem; padding: 0 1.25rem; }
+
+  /* FOOTER */
+  .site-footer { padding: 3rem 1.25rem 2rem; }
+  .footer-brand-logo { height: 55px; }
+  .footer-social-bar { gap: 1.25rem; padding: 1.25rem 0; }
+  .footer-social-bar a { font-size: 0.7rem; }
+  .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; }
+}
+
+@media (max-width: 480px) {
+  /* Extra small phones */
+  .hero { padding: 5.5rem 1rem 2.5rem; }
+  .nav-logo img { height: 36px; }
+  .expect-list { grid-template-columns: 1fr; }
+  .section-title { font-size: clamp(2rem, 8vw, 3rem); }
+  .benefit-card h3, .earn-card h3 { font-size: 1rem; }
+  .form-wrapper { padding: 1rem; border-radius: 8px; }
+  .footer-social-bar { gap: 1rem; }
+  .footer-social-bar a { font-size: 0.65rem; letter-spacing: 0.12em; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><img src="logo2.png" alt="Greek Empire" loading="lazy"></a>
+  <a href="#apply" class="nav-cta" style="display:none;">Apply Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Campus Ambassador Program</div>
+  <img src="logo.png" alt="Greek Empire" style="width: min(650px, 85vw); height: auto; margin-bottom: 0.5rem; cursor: pointer;" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <p class="hero-sub">Branded Merchandise for the Best Years of Your Life</p>
+  <p style="font-family:var(--font-display);font-size:clamp(0.9rem,2.5vw,1.4rem);letter-spacing:0.2em;text-transform:uppercase;color:#ffffff;margin-top:0.5rem;font-weight:400;">Online Store Coming Soon</p>
+
+</section>
+
+
+
+<!-- DIVIDER -->
+<div class="gold-divider"></div>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">Rush Shirts</span>
+    <span class="marquee-item">Bid Day Drops</span>
+    <span class="marquee-item">Hoodies</span>
+    <span class="marquee-item">Hats</span>
+    <span class="marquee-item">Event Apparel</span>
+    <span class="marquee-item">Branded Merch</span>
+    <span class="marquee-item">Drinkware</span>
+    <span class="marquee-item">Tailgate Gear</span>
+    <span class="marquee-item">Rush Shirts</span>
+    <span class="marquee-item">Bid Day Drops</span>
+    <span class="marquee-item">Hoodies</span>
+    <span class="marquee-item">Hats</span>
+    <span class="marquee-item">Event Apparel</span>
+    <span class="marquee-item">Branded Merch</span>
+    <span class="marquee-item">Drinkware</span>
+    <span class="marquee-item">Tailgate Gear</span>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="gold-divider"></div>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <div class="container">
+    <div class="section-eyebrow" style="background:none;-webkit-text-fill-color:#1a1a16;color:#1a1a16;">About the Program</div>
+
+    <p class="about-body">Greek Empire is a branded merchandise company built specifically for college and university life. As a Campus Ambassador, you'll help connect people at your school with Greek Empire while gaining experience in sales, marketing, networking, and entrepreneurship. You'll build relationships on campus, help organizations create custom merchandise, and earn commission on orders you bring in.</p>
+    <p class="about-body"><em>*Being a member of a Fraternity or Sorority is not a requirement to be a Campus Ambassador.</em></p>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- WHAT WE PROVIDE -->
+<section class="benefits-section reveal">
+  <div class="container">
+    <div class="section-eyebrow">What We Provide</div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-num" data-count="1">00</div>
+        <h3>Triple earning potential</h3>
+        
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num" data-count="2">00</div>
+        <h3>Dedicated support</h3>
+        
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num" data-count="3">00</div>
+        <h3>Personalized marketing plan</h3>
+        
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num" data-count="4">00</div>
+        <h3>Branded Merch to Wear & Promote</h3>
+        
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num" data-count="5">00</div>
+        <h3>Exclusive Drops</h3>
+        
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num" data-count="6">00</div>
+        <h3>Real Sales and Marketing Experience</h3>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- 3 WAYS TO EARN -->
+<section id="earn" class="reveal">
+  <div class="container">
+    <div class="section-eyebrow" style="background:none;-webkit-text-fill-color:#1a1a16;color:#1a1a16;">3 Ways to Earn</div>
+
+    <div class="earn-cards">
+      <div class="earn-card">
+        <div class="earn-card-num" data-count="1">00</div>
+        <h3>Commission on orders</h3>
+        
+      </div>
+      <div class="earn-card">
+        <div class="earn-card-num" data-count="2">00</div>
+        <h3>Social Media Incentives</h3>
+        
+      </div>
+      <div class="earn-card">
+        <div class="earn-card-num" data-count="3">00</div>
+        <h3>Ambassador referrals</h3>
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- WHAT WE EXPECT -->
+<section class="expect-section reveal">
+  <div class="container">
+    <div class="section-eyebrow">What We Expect</div>
+
+    <ul class="expect-list">
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Drive Sales</div>
+        <div class="expect-body">Actively promote Branded merch to student organizations, club leaders, campus groups, and businesses in your area.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Build Relationships</div>
+        <div class="expect-body">Build relationships with students, organizations, and clubs on your campus, as well as other companies who buy merch.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Connect Organizations</div>
+        <div class="expect-body">Introduce student organization leaders to Greek Empire for custom Branded products.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Manage Orders</div>
+        <div class="expect-body">Help organize and manage orders with support from the Greek Empire team.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Earn Your Spot</div>
+        <div class="expect-body">Greek Empire limits ambassadors geographically — work hard to keep your spot.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Stay Responsive</div>
+        <div class="expect-body">Be responsive to opportunities and communicate regularly with the Greek Empire team.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Own Your Campus</div>
+        <div class="expect-body">Represent Greek Empire authentically within your chapter and campus community.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Keep Records</div>
+        <div class="expect-body">Log all contacts and orders in the Greek Empire CRM.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Create Content</div>
+        <div class="expect-body">Generate social content to earn more from our Social Media Incentives Program (Instagram and/or TikTok). Must be approved before posting.</div></div>
+      </li>
+      <li>
+        <div class="expect-item-text"><div class="expect-title">Elevate the Culture</div>
+        <div class="expect-body">Conduct yourself in a way consistent with the Greek Empire brand — elevated, credible, and culturally embedded.</div></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- APPLY / SIGN -->
+<section class="form-section reveal" id="apply">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-eyebrow" style="background:none;-webkit-text-fill-color:#1a1a16;color:#1a1a16;display:inline-flex;justify-content:flex-start;">Campus Ambassador Sign Up Form</div>
+    </div>
+
+    <div class="form-wrapper" id="formCard">
+
+      <div class="agree-list">
+        <p class="form-intro" style="font-weight:700;text-align:center;">Please review our terms and agreement below to complete your application.</p>
+        <div class="bs-accordion" id="sip-accordion">
+          <button class="bs-toggle" onclick="toggleSIP(event)" type="button">View Social Media Incentives Program Terms ▾</button>
+          <div class="bs-content" id="sip-content" style="display:none;">
+            <div class="bs-section">
+              <div class="bs-heading">OVERVIEW</div>
+              <p style="font-size:0.82rem;color:#ffffff;line-height:1.7;margin:0;">You are the target market. You understand what's trending, what resonates, and what makes people stop scrolling. This program rewards you for putting that knowledge to work — creating authentic, engaging content for Greek Empire's social media channels across TikTok and Instagram.</p>
+            </div>
+            <div class="bs-section">
+              <div class="bs-heading">HOW IT WORKS</div>
+              <ul class="bs-list">
+                <li>Create content for Greek Empire for approval to be posted and the opportunity to be featured on our TikTok and Instagram, or share it on your own social media after it is approved</li>
+                <li>Earn cash rewards based on engagement</li>
+                <li>All metrics must be verified by Greek Empire management before payouts are issued</li>
+              </ul>
+            </div>
+            <div class="bs-section">
+              <div class="bs-heading">VIEWS MILESTONES</div>
+              <p style="font-size:0.75rem;color:#ffffff;margin:0 0 0.75rem;">Views are the hardest metric to game. The same video can qualify for multiple rewards if it continues to go viral!</p>
+              <table style="width:100%;border-collapse:collapse;font-size:0.8rem;">
+                <tr style="border-bottom:1px solid rgba(201,168,76,0.2);">
+                  <th style="text-align:center;padding:0.3rem 0.5rem;color:#C9A84C;font-family:var(--font-display);letter-spacing:0.1em;">VIEWS</th>
+                  <th style="text-align:center;padding:0.3rem 0.5rem;color:#C9A84C;font-family:var(--font-display);letter-spacing:0.1em;">REWARD</th>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">1,000 views</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">$10</td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">5,000 views</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">+ $15</td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">10,000 views</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">+ $20</td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">50,000 views</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">+ $25</td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">100,000+ views</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">+ $50</td></tr>
+                <tr><td style="padding:0.75rem 0.5rem;color:#C9A84C;font-size:0.95rem;font-weight:700;letter-spacing:0.04em;text-align:center;" colspan="2">Total cumulative payout for 100,000 views: $120</td></tr>
+              </table>
+            </div>
+            <div class="bs-section">
+              <div class="bs-heading">SHARES MILESTONES</div>
+              <p style="font-size:0.75rem;color:#ffffff;margin:0 0 0.75rem;">Shares and saves are the highest-intent metrics. Milestones stack as shares climb through each threshold.</p>
+              <table style="width:100%;border-collapse:collapse;font-size:0.8rem;">
+                <tr style="border-bottom:1px solid rgba(201,168,76,0.2);">
+                  <th style="text-align:center;padding:0.3rem 0.5rem;color:#C9A84C;font-family:var(--font-display);letter-spacing:0.1em;">SHARES</th>
+                  <th style="text-align:center;padding:0.3rem 0.5rem;color:#C9A84C;font-family:var(--font-display);letter-spacing:0.1em;">REWARD</th>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">50 shares</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">$10</td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">100 shares</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">+ $20</td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">250 shares</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">+ $30</td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.2rem 0.5rem;color:#ffffff;text-align:center;">500+ shares</td><td style="padding:0.5rem;text-align:center;color:#fff;font-weight:700;padding:0.2rem 0.5rem;">+ $40</td></tr>
+                <tr><td style="padding:0.75rem 0.5rem;color:#C9A84C;font-size:0.95rem;font-weight:700;letter-spacing:0.04em;text-align:center;" colspan="2">Total cumulative payout for 500+ shares: $100</td></tr>
+              </table>
+            </div>
+            <div class="bs-section">
+              <div class="bs-heading">RULES & VERIFICATION</div>
+              <ul class="bs-list">
+                <li>All content must be submitted to Greek Empire's Empire Social Review Portal</li>
+                <li>Required monthly ambassador content qualifies for the SIP Program</li>
+                <li>Metrics are verified by management before any payout</li>
+                <li>Screenshots of analytics must be submitted for verification within 7 days of milestone hit</li>
+                <li>Metrics are measured within a 14-day window from the post date</li>
+                <li>Coordinated sharing within friend groups to inflate numbers is not permitted — organic reach only</li>
+                <li>Use of bots, purchased followers, or paid engagement of any kind is strictly prohibited and will result in disqualification</li>
+                <li>Rewards stack — hitting views and shares on the same video earns both rewards</li>
+                <li>Reward amounts are subject to change based on company budget and marketing plans</li>
+                <li>Management's decisions on award criteria and disputes are final</li>
+              </ul>
+            </div>
+            <div class="bs-footer">
+              <span>Questions? Email <a href="mailto:mcarter@greekempire.com?subject=SIP%20Terms%20Question" style="color:#C9A84C;">mcarter@greekempire.com</a>.</span>
+            </div>
+          </div>
+        </div>
+        <div class="bs-accordion" id="crm-accordion">
+          <button class="bs-toggle" onclick="toggleCRM(event)" type="button">View CRM Reporting Requirements ▾</button>
+          <div class="bs-content" id="crm-content" style="display:none;">
+            <div class="bs-section">
+              <p style="font-size:0.82rem;color:#ffffff;line-height:1.7;margin:0;">All ambassadors are required to use the Greek Empire CRM. No exceptions. This is how your activity is tracked, commissions are calculated, and the brand learns what's working on the ground.</p>
+            </div>
+            <div class="bs-section">
+              <div class="bs-heading">WHAT TO LOG</div>
+              <p style="font-size:0.82rem;color:#ffffff;line-height:1.7;margin:0 0 0.75rem;">Every interaction with a campus organization must be entered into the CRM. This includes:</p>
+              <ul class="bs-list">
+                <li>Every organization contact you speak with — name, email, phone number, and any additional notes</li>
+                <li>Order status from first conversation through to placement</li>
+                <li>Wins, objections, and feedback from organizations</li>
+                <li>Campus observations — what's resonating, what the competition is doing, what's coming up</li>
+              </ul>
+              <p style="font-size:0.82rem;color:#C9A84C;font-style:italic;line-height:1.7;margin:0.75rem 0 0;"><strong>You are Greek Empire's eyes and ears on campus. What you observe directly shapes how the brand grows.</strong></p>
+            </div>
+            <div class="bs-section">
+              <div class="bs-heading">CAMPUS INSIGHTS</div>
+              <p style="font-size:0.82rem;color:#ffffff;line-height:1.7;margin:0 0 0.75rem;">Beyond orders, your most valuable contribution is real-time intelligence from the ground. Report what you're seeing and hearing:</p>
+              <ul class="bs-list">
+                <li>Which organizations are ordering and why</li>
+                <li>What competitors are doing or offering</li>
+                <li>What's resonating with students — and what isn't</li>
+                <li>Customer satisfaction or dissatisfaction after orders</li>
+                <li>Upcoming events, bid days, and organization milestones to target</li>
+              </ul>
+              <p style="font-size:0.82rem;color:#C9A84C;font-style:italic;line-height:1.7;margin:0.75rem 0 0;"><strong>You'll receive a bi-weekly automated check-in to capture this. Take it seriously — this feedback shapes the brand.</strong></p>
+            </div>
+            <div class="bs-footer">
+              <span>Questions? Email <a href="mailto:mcarter@greekempire.com?subject=CRM%20Reporting%20Question" style="color:#C9A84C;">mcarter@greekempire.com</a>.</span>
+            </div>
+          </div>
+        </div>
+        <div class="bs-accordion" id="bs-accordion">
+          <button class="bs-toggle" onclick="toggleBS(event)" type="button">View Brand Standards ▾</button>
+          <div class="bs-content" id="bs-content" style="display:none;">
+            <div class="bs-section">
+              <div class="bs-heading">WHO WE ARE</div>
+              <ul class="bs-list">
+                <li>Confident and self-aware</li>
+                <li>Part of college life culture</li>
+                <li>Premium and cinematic in feel</li>
+                <li>Authentic and campus-native</li>
+                <li>About identity and experience</li>
+              </ul>
+            </div>
+            <div class="bs-section">
+              <div class="bs-heading">VISUAL IDENTITY</div>
+              <ul class="bs-list">
+                <li>Colors: Black, Gold, Cream/Off-white</li>
+                <li>Aesthetic: Premium, bold, cinematic — this is a legacy brand with weight</li>
+                <li>Always: elevated, clean, and iconic</li>
+                <li><strong>When in doubt</strong> — before posting or distributing anything with the Greek Empire name or logo — check with management first.</li>
+              </ul>
+            </div>
+            <div class="bs-section">
+              <div class="bs-do-dont">
+                <div>
+                  <div class="bs-heading do">✓ DO</div>
+                  <ul class="bs-list">
+                    <li>Post from inside real college life moments</li>
+                    <li>Tag @_greekempire_ organically</li>
+                    <li>Wear the brand around campus</li>
+                    <li>Engage authentically</li>
+                    <li>Submit all social media content through our portal to be approved before posting</li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="bs-heading dont">✕ DON'T</div>
+                  <ul class="bs-list">
+                    <li>Post without approval</li>
+                    <li>Post any social media content without receiving approval</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="bs-footer">
+<span>Questions? Email <a href="mailto:mcarter@greekempire.com?subject=Brand%20Standards%20Question" style="color:#C9A84C;">mcarter@greekempire.com</a>.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <label class="agree-row agree-row-terms" id="chk-consolidated" style="margin-bottom:1.5rem;flex-direction:column;align-items:flex-start;gap:0.5rem;"><div style="display:flex;align-items:center;gap:12px;"><input type="checkbox" id="chk5"> <strong>By checking this box I confirm the following:</strong></div><ul style="margin:0.5rem 0 0 1.5rem;padding:0;list-style:disc;font-size:0.9rem;color:#111111;line-height:1.8;"><li>I acknowledge that Greek Empire limits ambassador representation at each school and that my position is contingent upon continued compliance with all program requirements.</li><li>I have read and agreed to the CRM Reporting Requirements.</li><li>I have read and agreed to the Social Media Incentives Program Terms.</li><li>I have read and agreed to the Greek Empire Brand Standards.</li></ul></label>
+
+
+      <div class="form-divider"></div>
+
+      <div class="field-grid">
+        <div class="field-group">
+          <label for="f-name">First Name</label>
+          <input type="text" id="f-name" placeholder="First Name" autocomplete="given-name">
+        </div>
+        <div class="field-group">
+          <label for="f-last">Last Name</label>
+          <input type="text" id="f-last" placeholder="Last Name" autocomplete="family-name">
+        </div>
+        <div class="field-group full">
+          <label for="f-email">Email Address</label>
+          <input type="email" id="f-email" placeholder="Email Address">
+        </div>
+        <div class="field-group full">
+          <label for="f-phone">Phone Number</label>
+          <input type="tel" id="f-phone" placeholder="Phone Number">
+        </div>
+        <div class="field-group full">
+          <label for="f-date">Date</label>
+          <input type="date" id="f-date">
+        </div>
+        <div class="field-group full">
+          <label for="f-college">University / College</label>
+          <input type="text" id="f-college" placeholder="University / College">
+        </div>
+        <div class="field-group full">
+          <label for="f-ig">Instagram Handle (optional)</label>
+          <input type="text" id="f-ig" placeholder="Instagram Handle (optional)">
+        </div>
+        <div class="field-group full">
+          <label for="f-referred">Referred By</label>
+          <select id="f-referred">
+            <option value="" disabled selected>Referred by</option>
+            <option value="Alexa">Alexa</option>
+            <option value="Avry">Avry</option>
+            <option value="Elijah">Elijah</option>
+            <option value="Jackson">Jackson</option>
+            <option value="Advertisement - Instagram">Advertisement - Instagram</option>
+            <option value="Advertisement - TikTok">Advertisement - TikTok</option>
+            <option value="Advertisement - Facebook">Advertisement - Facebook</option>
+          </select>
+        </div>
+        <div class="field-group full">
+          <label for="f-message">Tell Us About Yourself</label>
+          <textarea id="f-message" placeholder="" rows="4" style="width:100%;background:#ffffff;border:1px solid rgba(201,168,76,0.3);border-radius:var(--radius);outline:none;padding:0.75rem 1rem;font-family:var(--font-sans);font-size:0.875rem;color:#111111;resize:vertical;"></textarea>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:0.4rem;line-height:1.5;">Tell us about yourself and your campus life. Are you a member of any Greek organizations, clubs or sports? Why do you want to be a college ambassador?</p>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" type="button" onclick="submitForm()">Submit Application</button>
+      <div class="form-error" id="formError">Please complete all fields, check all boxes, and add your signature.</div>
+    </div>
+
+    <div id="successMsg">
+      <div class="check">✓</div>
+      <h3>APPLICATION SUBMITTED</h3>
+      <p>Welcome to the Empire. We'll be in touch shortly.</p>
+      <div class="ref" id="refNum"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo2.png" alt="Greek Empire" class="footer-brand-logo" loading="lazy">
+        <p class="footer-tagline">Branded Merchandise for the Best Years of Your Life</p>
+        <p class="footer-address">281 Benigno Blvd, Bellmawr, NJ 08031</p>
+      </div>
+    </div>
+    <div class="footer-social-bar">
+      <a href="https://www.tiktok.com/@_greekempire_" target="_blank">TikTok</a>
+      <a href="https://www.instagram.com/_greekempire_" target="_blank">Instagram</a>
+      <a href="https://snapchat.com/t/EyeRIpim" target="_blank">Snapchat</a>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Greek Empire · All Rights Reserved</span>
+      <span class="footer-est">Est. 334 BC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqgdlkj';
+
+function submitForm() {
+  const allChecked = ['chk5'].every(id => document.getElementById(id).checked);
+  const name     = document.getElementById('f-name').value.trim();
+  const lastName = document.getElementById('f-last') ? document.getElementById('f-last').value.trim() : '';
+  const email    = document.getElementById('f-email').value.trim();
+  const phone    = document.getElementById('f-phone').value.trim();
+  const date     = document.getElementById('f-date').value;
+  const college  = document.getElementById('f-college').value.trim();
+  const ig       = document.getElementById('f-ig').value.trim();
+  const referred = document.getElementById('f-referred').value;
+  const message  = document.getElementById('f-message') ? document.getElementById('f-message').value.trim() : '';
+  const err = document.getElementById('formError');
+  let missing = [];
+  if (!name) missing.push('First Name');
+  if (!lastName) missing.push('Last Name');
+  if (!email) missing.push('Email');
+  if (!phone) missing.push('Phone');
+  if (!date) missing.push('Date');
+  if (!college) missing.push('University/College');
+  if (!referred) missing.push('Referred By');
+  if (!message) missing.push('Tell Us About Yourself');
+  if (!allChecked) missing.push('All checkboxes');
+  if (missing.length > 0) {
+    err.textContent = 'Missing: ' + missing.join(', ');
+    err.style.display = 'block'; return;
+  }
+  err.style.display = 'none';
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Submitting…';
+
+  const refNum = 'GE-' + Date.now().toString(36).toUpperCase();
+
+  const formData = new FormData();
+  formData.append('Reference', refNum);
+  formData.append('First Name', name);
+  formData.append('Last Name', lastName);
+  formData.append('Email', email);
+  formData.append('Phone', phone);
+  formData.append('Date', date);
+  formData.append('College', college);
+  formData.append('Instagram Handle', ig);
+  formData.append('Referred By', referred);
+  formData.append('Tell Us About Yourself', message);
+  formData.append('Agreements Accepted', 'Social Media Incentives Terms, CRM Reporting Requirements, Brand Standards');
+  formData.append('_subject', 'New Greek Empire Ambassador Application — ' + name + ' ' + lastName);
+
+  fetch(FORMSPREE_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: formData
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('Submission failed');
+    document.getElementById('formCard').style.display = 'none';
+    const s = document.getElementById('successMsg');
+    s.style.display = 'block';
+    fbq('track', 'Lead');
+    ttq.track('SubmitForm');
+    document.getElementById('refNum').textContent = 'Reference: ' + refNum + ' · ' + new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+  })
+  .catch(() => {
+    err.textContent = 'Something went wrong submitting your application. Please try again, or contact us directly.';
+    err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Submit Application';
+  });
+}
+
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.getElementById('f-date').valueAsDate = new Date();
+
+function toggleCRM(e) {
+  e.preventDefault();
+  const content = document.getElementById('crm-content');
+  const btn = e.currentTarget;
+  const open = content.style.display !== 'none';
+  content.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? 'View CRM Reporting Requirements ▾' : 'Hide CRM Reporting Requirements ▴';
+  const label = document.getElementById('chk3-label');
+  const hint = document.getElementById('chk3-hint');
+  if (label) { label.style.opacity = '1'; label.style.pointerEvents = 'auto'; }
+  if (hint) { hint.style.display = 'none'; }
+}
+function toggleSIP(e) {
+  e.preventDefault();
+  const content = document.getElementById('sip-content');
+  const btn = e.currentTarget;
+  const open = content.style.display !== 'none';
+  content.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? 'View Social Media Incentives Program Terms ▾' : 'Hide Social Media Incentives Program Terms ▴';
+  const label = document.getElementById('chk2-label');
+  const hint = document.getElementById('chk2-hint');
+  if (label) { label.style.opacity = '1'; label.style.pointerEvents = 'auto'; }
+  if (hint) { hint.style.display = 'none'; }
+}
+function toggleBS(e) {
+  e.preventDefault();
+  const content = document.getElementById('bs-content');
+  const btn = e.currentTarget;
+  const open = content.style.display !== 'none';
+  content.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? 'View Brand Standards ▾' : 'Hide Brand Standards ▴';
+  // Unlock checkbox once opened
+  const label = document.getElementById('chk4-label');
+  const hint = document.getElementById('chk4-hint');
+  if (label) { label.style.opacity = '1'; label.style.pointerEvents = 'auto'; }
+  if (hint) { hint.style.display = 'none'; }
+}
+const countEls = document.querySelectorAll('[data-count]');
+const countObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.count);
+    let start = 0;
+    const duration = 900;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const val = Math.floor(progress * target);
+      el.textContent = String(val).padStart(2, '0');
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    countObs.unobserve(el);
+  });
+}, { threshold: 0.3 });
+countEls.forEach(el => countObs.observe(el));
+
+</script>
+<!-- TikTok Pixel Code -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=['page','track','identify','instances','debug','on','off','once','ready','alias','group','enableCookie','disableCookie'],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i='https://analytics.tiktok.com/i18n/pixel/events.js';ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement('script');o.type='text/javascript',o.async=!0,o.src=i+'?sdkid='+e+'&lib='+t;var a=document.getElementsByTagName('script')[0];a.parentNode.insertBefore(o,a)};
+  ttq.load('D90TB5BC77UBI6V94GFG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- End TikTok Pixel Code -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1566028055129817');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1566028055129817&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</body>
+</html>
