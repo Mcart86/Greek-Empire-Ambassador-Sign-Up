@@ -780,7 +780,7 @@ footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1
 <script>
 
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqgdlkj';
+const CRM_ENDPOINT = 'https://gxglrktbvumrpzhlogno.supabase.co/functions/v1/apply';
 
 function submitForm() {
   const allChecked = ['chk5'].every(id => document.getElementById(id).checked);
@@ -814,24 +814,28 @@ function submitForm() {
 
   const refNum = 'GE-' + Date.now().toString(36).toUpperCase();
 
-  const formData = new FormData();
-  formData.append('Reference', refNum);
-  formData.append('First Name', name);
-  formData.append('Last Name', lastName);
-  formData.append('Email', email);
-  formData.append('Phone', phone);
-  formData.append('Date', date);
-  formData.append('College', college);
-  formData.append('Instagram Handle', ig);
-  formData.append('Referred By', referred);
-  formData.append('Tell Us About Yourself', message);
-  formData.append('Agreements Accepted', 'Social Media Incentives Terms, CRM Reporting Requirements, Brand Standards');
-  formData.append('_subject', 'New Greek Empire Ambassador Application — ' + name + ' ' + lastName);
+  // Submit straight into the Greek Empire CRM intake (replaces Formspree).
+  // Keys map to the CRM's public /apply endpoint; extra context (date,
+  // reference, message, agreements) rides along in the stored raw payload.
+  const payload = {
+    name_first: name,
+    name_last: lastName,
+    email: email,
+    phone: phone,
+    school_text: college,
+    instagram_handle: ig,
+    recruited_by_text: referred,
+    source: 'ambassador-signup',
+    reference: refNum,
+    application_date: date,
+    message: message,
+    agreements_accepted: 'Social Media Incentives Terms, CRM Reporting Requirements, Brand Standards'
+  };
 
-  fetch(FORMSPREE_ENDPOINT, {
+  fetch(CRM_ENDPOINT, {
     method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: formData
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
   })
   .then(res => {
     if (!res.ok) throw new Error('Submission failed');
