@@ -669,7 +669,119 @@ footer { background: var(--off-black); border-top: 1px solid rgba(201,168,76,0.1
         </div>
         <div class="field-group full">
           <label for="f-college">University / College</label>
-          <input type="text" id="f-college" placeholder="University / College">
+          <select id="f-college" onchange="onCollegeChange()">
+            <option value="" disabled selected>Select your university / college</option>
+            <option value="Albright College">Albright College</option>
+            <option value="American University">American University</option>
+            <option value="Arizona State University">Arizona State University</option>
+            <option value="Auburn University">Auburn University</option>
+            <option value="Bucknell University">Bucknell University</option>
+            <option value="Central Connecticut State University">Central Connecticut State University</option>
+            <option value="Clemson University">Clemson University</option>
+            <option value="Columbia University">Columbia University</option>
+            <option value="Dickinson College">Dickinson College</option>
+            <option value="Drew University">Drew University</option>
+            <option value="Drexel University">Drexel University</option>
+            <option value="Duke University">Duke University</option>
+            <option value="Eastern Connecticut State University">Eastern Connecticut State University</option>
+            <option value="Elizabethtown College">Elizabethtown College</option>
+            <option value="Fairfield University">Fairfield University</option>
+            <option value="Fairleigh Dickinson University">Fairleigh Dickinson University</option>
+            <option value="Florida A&amp;M University">Florida A&amp;M University</option>
+            <option value="Florida State University">Florida State University</option>
+            <option value="Fordham University">Fordham University</option>
+            <option value="Franklin &amp; Marshall College">Franklin &amp; Marshall College</option>
+            <option value="George Washington University">George Washington University</option>
+            <option value="Georgetown University">Georgetown University</option>
+            <option value="Gettysburg College">Gettysburg College</option>
+            <option value="Hofstra University">Hofstra University</option>
+            <option value="Howard University">Howard University</option>
+            <option value="Indiana University">Indiana University</option>
+            <option value="Iowa State University">Iowa State University</option>
+            <option value="James Madison University">James Madison University</option>
+            <option value="Johns Hopkins University">Johns Hopkins University</option>
+            <option value="Juniata College">Juniata College</option>
+            <option value="Kansas State University">Kansas State University</option>
+            <option value="Lafayette College">Lafayette College</option>
+            <option value="Lebanon Valley College">Lebanon Valley College</option>
+            <option value="Lehigh University">Lehigh University</option>
+            <option value="Louisiana State University">Louisiana State University</option>
+            <option value="Loyola Maryland">Loyola Maryland</option>
+            <option value="Messiah University">Messiah University</option>
+            <option value="Michigan State University">Michigan State University</option>
+            <option value="Millersville University">Millersville University</option>
+            <option value="Monmouth University">Monmouth University</option>
+            <option value="Muhlenberg College">Muhlenberg College</option>
+            <option value="New York University">New York University</option>
+            <option value="Ohio State University">Ohio State University</option>
+            <option value="Oklahoma State University">Oklahoma State University</option>
+            <option value="Penn State University">Penn State University</option>
+            <option value="Princeton University">Princeton University</option>
+            <option value="Purdue University">Purdue University</option>
+            <option value="Quinnipiac University">Quinnipiac University</option>
+            <option value="Rider University">Rider University</option>
+            <option value="Rowan University">Rowan University</option>
+            <option value="Rutgers University – New Brunswick">Rutgers University – New Brunswick</option>
+            <option value="Rutgers University – Newark">Rutgers University – Newark</option>
+            <option value="Sacred Heart University">Sacred Heart University</option>
+            <option value="Saint Joseph's University">Saint Joseph's University</option>
+            <option value="Seton Hall University">Seton Hall University</option>
+            <option value="Shippensburg University">Shippensburg University</option>
+            <option value="Southern Connecticut State University">Southern Connecticut State University</option>
+            <option value="Stony Brook University">Stony Brook University</option>
+            <option value="Susquehanna University">Susquehanna University</option>
+            <option value="Syracuse University">Syracuse University</option>
+            <option value="Temple University">Temple University</option>
+            <option value="Texas A&amp;M University">Texas A&amp;M University</option>
+            <option value="The College of New Jersey">The College of New Jersey</option>
+            <option value="Towson University">Towson University</option>
+            <option value="Tulane University">Tulane University</option>
+            <option value="University of Alabama">University of Alabama</option>
+            <option value="University of Alabama at Birmingham">University of Alabama at Birmingham</option>
+            <option value="University of Arizona">University of Arizona</option>
+            <option value="University of Arkansas">University of Arkansas</option>
+            <option value="University of Bridgeport">University of Bridgeport</option>
+            <option value="University of Central Florida">University of Central Florida</option>
+            <option value="University of Colorado Boulder">University of Colorado Boulder</option>
+            <option value="University of Connecticut">University of Connecticut</option>
+            <option value="University of Delaware">University of Delaware</option>
+            <option value="University of Florida">University of Florida</option>
+            <option value="University of Georgia">University of Georgia</option>
+            <option value="University of Illinois Urbana-Champaign">University of Illinois Urbana-Champaign</option>
+            <option value="University of Iowa">University of Iowa</option>
+            <option value="University of Kansas">University of Kansas</option>
+            <option value="University of Kentucky">University of Kentucky</option>
+            <option value="University of Maryland">University of Maryland</option>
+            <option value="University of Maryland, Baltimore County">University of Maryland, Baltimore County</option>
+            <option value="University of Miami">University of Miami</option>
+            <option value="University of Michigan">University of Michigan</option>
+            <option value="University of Minnesota">University of Minnesota</option>
+            <option value="University of Mississippi">University of Mississippi</option>
+            <option value="University of Missouri">University of Missouri</option>
+            <option value="University of Nebraska-Lincoln">University of Nebraska-Lincoln</option>
+            <option value="University of North Carolina">University of North Carolina</option>
+            <option value="University of Oklahoma">University of Oklahoma</option>
+            <option value="University of Pennsylvania">University of Pennsylvania</option>
+            <option value="University of Pittsburgh">University of Pittsburgh</option>
+            <option value="University of South Carolina">University of South Carolina</option>
+            <option value="University of South Florida">University of South Florida</option>
+            <option value="University of Tennessee">University of Tennessee</option>
+            <option value="University of Texas at Austin">University of Texas at Austin</option>
+            <option value="University of the Arts">University of the Arts</option>
+            <option value="University of Virginia">University of Virginia</option>
+            <option value="University of Wisconsin-Madison">University of Wisconsin-Madison</option>
+            <option value="Ursinus College">Ursinus College</option>
+            <option value="Vanderbilt University">Vanderbilt University</option>
+            <option value="Villanova University">Villanova University</option>
+            <option value="West Chester University">West Chester University</option>
+            <option value="Western Connecticut State University">Western Connecticut State University</option>
+            <option value="Yale University">Yale University</option>
+            <option value="__other__">Other — my school isn't listed</option>
+          </select>
+        </div>
+        <div class="field-group full" id="f-college-other-group" style="display:none;">
+          <label for="f-college-other">Enter your university / college</label>
+          <input type="text" id="f-college-other" placeholder="Type your university / college">
         </div>
         <div class="field-group full">
           <label for="f-ig">Instagram Handle (optional)</label>
@@ -789,7 +901,9 @@ function submitForm() {
   const email    = document.getElementById('f-email').value.trim();
   const phone    = document.getElementById('f-phone').value.trim();
   const date     = document.getElementById('f-date').value;
-  const college  = document.getElementById('f-college').value.trim();
+  const collegeSel   = document.getElementById('f-college').value;
+  const collegeOther = document.getElementById('f-college-other') ? document.getElementById('f-college-other').value.trim() : '';
+  const college  = collegeSel === '__other__' ? collegeOther : collegeSel;
   const ig       = document.getElementById('f-ig').value.trim();
   const referred = document.getElementById('f-referred').value;
   const message  = document.getElementById('f-message') ? document.getElementById('f-message').value.trim() : '';
@@ -853,6 +967,14 @@ function submitForm() {
   });
 }
 
+// Reveal the free-text field when "Other" is chosen in the school dropdown.
+function onCollegeChange() {
+  const sel = document.getElementById('f-college').value;
+  const grp = document.getElementById('f-college-other-group');
+  const other = document.getElementById('f-college-other');
+  if (sel === '__other__') { grp.style.display = ''; other.focus(); }
+  else { grp.style.display = 'none'; other.value = ''; }
+}
 
 // Scroll reveal
 const observer = new IntersectionObserver((entries) => {
